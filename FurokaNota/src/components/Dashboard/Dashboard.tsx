@@ -24,7 +24,7 @@ export function Dashboard() {
   const balance = income - expense;
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-4 md:p-6 space-y-4 md:space-y-6">
       {/* Month selector */}
       <div className="flex items-center gap-3">
         <label className="text-sm text-slate-600 font-medium">表示月</label>
@@ -37,18 +37,18 @@ export function Dashboard() {
       </div>
 
       {/* Summary cards */}
-      <div className="grid grid-cols-3 gap-4">
-        <div className="bg-emerald-50 rounded-2xl p-5 border border-emerald-100">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
+        <div className="bg-emerald-50 rounded-2xl p-4 md:p-5 border border-emerald-100">
           <p className="text-xs text-emerald-600 font-medium mb-1">収入</p>
-          <p className="text-2xl font-bold text-emerald-700">{formatCurrency(income)}</p>
+          <p className="text-xl md:text-2xl font-bold text-emerald-700">{formatCurrency(income)}</p>
         </div>
-        <div className="bg-red-50 rounded-2xl p-5 border border-red-100">
+        <div className="bg-red-50 rounded-2xl p-4 md:p-5 border border-red-100">
           <p className="text-xs text-red-500 font-medium mb-1">支出</p>
-          <p className="text-2xl font-bold text-red-600">{formatCurrency(expense)}</p>
+          <p className="text-xl md:text-2xl font-bold text-red-600">{formatCurrency(expense)}</p>
         </div>
-        <div className={`rounded-2xl p-5 border ${balance >= 0 ? 'bg-blue-50 border-blue-100' : 'bg-orange-50 border-orange-100'}`}>
+        <div className={`rounded-2xl p-4 md:p-5 border ${balance >= 0 ? 'bg-blue-50 border-blue-100' : 'bg-orange-50 border-orange-100'}`}>
           <p className="text-xs text-slate-500 font-medium mb-1">収支</p>
-          <p className={`text-2xl font-bold ${balance >= 0 ? 'text-blue-700' : 'text-orange-600'}`}>
+          <p className={`text-xl md:text-2xl font-bold ${balance >= 0 ? 'text-blue-700' : 'text-orange-600'}`}>
             {formatCurrency(balance)}
           </p>
         </div>
@@ -63,18 +63,18 @@ export function Dashboard() {
       )}
 
       {/* Charts */}
-      <div className="grid grid-cols-2 gap-6">
-        <div className="bg-white rounded-2xl border border-slate-200 p-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
+        <div className="bg-white rounded-2xl border border-slate-200 p-4 md:p-5">
           <h3 className="text-sm font-semibold text-slate-700 mb-4">月次収支 (直近12ヶ月)</h3>
           <MonthlyBar transactions={transactions} />
         </div>
-        <div className="bg-white rounded-2xl border border-slate-200 p-5">
+        <div className="bg-white rounded-2xl border border-slate-200 p-4 md:p-5">
           <h3 className="text-sm font-semibold text-slate-700 mb-4">カテゴリ別支出 ({month})</h3>
           <CategoryPie transactions={transactions} month={month} />
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl border border-slate-200 p-5">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 md:p-5">
         <h3 className="text-sm font-semibold text-slate-700 mb-4">収支推移 (直近12ヶ月)</h3>
         <TrendLine transactions={transactions} />
       </div>

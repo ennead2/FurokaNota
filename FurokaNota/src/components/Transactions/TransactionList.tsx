@@ -13,7 +13,8 @@ export function TransactionList() {
   const { transactions, addTransaction, updateTransaction, deleteTransaction } =
     useTransactionStore();
 
-  const today = new Date().toISOString().slice(0, 7);
+  const now = new Date();
+  const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
   const [month, setMonth] = useState(today);
   const [search, setSearch] = useState('');
   const [showForm, setShowForm] = useState(false);
@@ -44,7 +45,7 @@ export function TransactionList() {
   }
 
   return (
-    <div className="p-6 space-y-4">
+    <div className="p-4 md:p-6 space-y-4">
       <div className="flex items-center justify-between flex-wrap gap-3">
         <TransactionFilter
           month={month}
@@ -111,7 +112,7 @@ export function TransactionList() {
               <p className="text-sm font-medium text-slate-800 truncate">{t.category}</p>
               {t.note && <p className="text-xs text-slate-400 truncate">{t.note}</p>}
             </div>
-            <span className="text-xs text-slate-400 whitespace-nowrap">{t.date}</span>
+            <span className="hidden sm:inline text-xs text-slate-400 whitespace-nowrap">{t.date}</span>
             <span className={`font-semibold whitespace-nowrap ${t.type === 'income' ? 'text-emerald-600' : 'text-red-500'}`}>
               {t.type === 'income' ? '+' : '-'}{formatCurrency(t.amount)}
             </span>

@@ -40,7 +40,7 @@ export function BudgetSettings() {
   }
 
   return (
-    <div className="p-6 space-y-6 max-w-2xl">
+    <div className="p-4 md:p-6 space-y-4 md:space-y-6 max-w-2xl">
       <div className="flex items-center gap-3">
         <label className="text-sm font-medium text-slate-600">設定月</label>
         <input

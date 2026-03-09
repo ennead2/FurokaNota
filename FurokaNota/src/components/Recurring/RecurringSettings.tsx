@@ -96,7 +96,7 @@ export function RecurringSettings() {
   }
 
   return (
-    <div className="p-6 space-y-6 max-w-2xl">
+    <div className="p-4 md:p-6 space-y-4 md:space-y-6 max-w-2xl">
       <div className="flex items-center justify-between">
         <p className="text-sm text-slate-500">
           設定した項目は毎月指定日に自動でトランザクションが生成されます。

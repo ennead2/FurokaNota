@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Sidebar } from './components/Layout/Sidebar';
 import { Header } from './components/Layout/Header';
@@ -24,6 +24,7 @@ const pageTitles: Record<string, string> = {
 
 function AppInner() {
   const location = useLocation();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const { fetchAll: fetchTransactions } = useTransactionStore();
   const { fetchAll: fetchBudgets } = useBudgetStore();
   const { fetchAll: fetchRecurring } = useRecurringStore();
@@ -37,13 +38,25 @@ function AppInner() {
     });
   }, [fetchTransactions, fetchBudgets, fetchRecurring]);
 
+  // Close sidebar on navigation
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [location.pathname]);
+
   const title = pageTitles[location.pathname] ?? 'FurokaNota';
 
   return (
     <div className="flex min-h-screen bg-slate-50">
-      <Sidebar />
+      {/* Mobile overlay */}
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-20 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex-1 flex flex-col min-w-0">
-        <Header title={title} />
+        <Header title={title} onMenuClick={() => setSidebarOpen(o => !o)} />
         <main className="flex-1 overflow-auto">
           <Routes>
             <Route path="/" element={<Dashboard />} />
