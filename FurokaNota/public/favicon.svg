@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="32" fill="#10b981"/>
+  <!-- Wallet body -->
+  <rect x="12" y="22" width="40" height="26" rx="4" fill="white"/>
+  <!-- Wallet flap -->
+  <rect x="12" y="18" width="40" height="10" rx="4" fill="#d1fae5"/>
+  <rect x="12" y="22" width="40" height="6" fill="#d1fae5"/>
+  <!-- Coin slot / pocket -->
+  <rect x="34" y="28" width="14" height="12" rx="3" fill="#10b981"/>
+  <!-- Coin dot -->
+  <circle cx="41" cy="34" r="3" fill="white"/>
+  <!-- Yen symbol -->
+  <text x="21" y="39" font-family="sans-serif" font-size="13" font-weight="bold" fill="#10b981">¥</text>
+</svg>
